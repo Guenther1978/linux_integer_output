@@ -6,6 +6,9 @@
     .equ    BIG_NUMBER, 5
     .equ    MAX_MULTIPLE, 512
 
+tmp_buffer:
+    .ascii "\0\0\0\0\0\0\0\0\0\0\0"
+
 multiple_small_number:
     .long 0
 multiple_big_number:
@@ -38,9 +41,11 @@ multiples_are_equal:
     jmp     compare_multiples
 
 small_multiple_is_smaller:
+#    pushl   %eax
+    pushl   $tmp_buffer
     pushl   %eax
     call    print_integer
-    addl    $4, %esp
+    addl    $8, %esp
     addl    %eax, sum_of_multiples
     addl    $SMALL_NUMBER, %eax
     movl    %eax, multiple_small_number
@@ -48,9 +53,11 @@ small_multiple_is_smaller:
     jg      compare_multiples
 
 big_multiple_is_smaller:
+#    pushl   %ecx
+    pushl   $tmp_buffer
     pushl   %ecx
     call    print_integer
-    addl    $4, %esp
+    addl    $8, %esp
     addl    %ecx, sum_of_multiples
     addl    $BIG_NUMBER, %ecx
     movl    %ecx, multiple_big_number
@@ -59,9 +66,10 @@ big_multiple_is_smaller:
 
     call    write_newline
 
+    pushl   $tmp_buffer
     pushl   sum_of_multiples
     call    print_integer
-    addl    $4, %esp
+    addl    $8, %esp
 
     # Exit
     movl    $SYS_EXIT, %eax
