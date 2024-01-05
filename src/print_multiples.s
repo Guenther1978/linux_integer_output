@@ -30,6 +30,7 @@ _start:
 compare_multiples:
     movl    multiple_small_number, %eax
     movl    multiple_big_number, %ecx
+    nop
     cmp     %eax, %ecx
     je      multiples_are_equal
     jg      small_multiple_is_smaller
@@ -41,11 +42,11 @@ multiples_are_equal:
     jmp     compare_multiples
 
 small_multiple_is_smaller:
-#    pushl   %eax
     pushl   $tmp_buffer
     pushl   %eax
     call    print_integer
     addl    $8, %esp
+    movl    multiple_small_number, %eax
     addl    %eax, sum_of_multiples
     addl    $SMALL_NUMBER, %eax
     movl    %eax, multiple_small_number
@@ -53,11 +54,11 @@ small_multiple_is_smaller:
     jg      compare_multiples
 
 big_multiple_is_smaller:
-#    pushl   %ecx
     pushl   $tmp_buffer
     pushl   %ecx
     call    print_integer
     addl    $8, %esp
+    movl    multiple_big_number, %ecx
     addl    %ecx, sum_of_multiples
     addl    $BIG_NUMBER, %ecx
     movl    %ecx, multiple_big_number
