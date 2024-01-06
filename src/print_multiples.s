@@ -51,7 +51,8 @@ small_multiple_is_smaller:
     addl    $SMALL_NUMBER, %eax
     movl    %eax, multiple_small_number
     cmp     $MAX_MULTIPLE, %eax
-    jg      compare_multiples
+    jle     compare_multiples
+    jmp     print_sum
 
 big_multiple_is_smaller:
     pushl   $tmp_buffer
@@ -63,8 +64,9 @@ big_multiple_is_smaller:
     addl    $BIG_NUMBER, %ecx
     movl    %ecx, multiple_big_number
     cmp     $MAX_MULTIPLE, %ecx
-    jg      compare_multiples
+    jle     compare_multiples
 
+print_sum:
     call    write_newline
 
     pushl   $tmp_buffer
