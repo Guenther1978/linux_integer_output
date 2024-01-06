@@ -3,7 +3,7 @@
 Here are some source files written in GNU assembly. The resulting executeable outputs an integer to the terminal.
 
 The files are taken from the book
-(Programming from the ground up)[https://www.cs.princeton.edu/courses/archive/spr04/cos217/reading/ProgrammingGroundUp-1-0-booksize.pdf]
+[Programming from the ground up](https://www.cs.princeton.edu/courses/archive/spr04/cos217/reading/ProgrammingGroundUp-1-0-booksize.pdf)
 written by Jonathan Bartlet.
 
 
@@ -45,6 +45,8 @@ To run the program, write `./multiple` on the terminel. The printed sum of the m
 
 ``` python-console
 >>> sum = (3 * 170 * 171 + 5 * 102 * 103 - 15 * 34 * 35) / 2
+>>> sum
+60945.0
 ```
 
 
